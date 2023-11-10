@@ -43,6 +43,18 @@ int value = 0;
 
 //Servos
 Servo myServo1;
+
+//Variables debounce boton
+#define boton 16
+
+int buttonState;            // the current reading from the input pin
+int lastButtonState = LOW;  // the previous reading from the input pin
+
+// the following variables are unsigned longs because the time, measured in
+// milliseconds, will quickly become a bigger number than can be stored in an int.
+unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
+unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
+
 //Initiates WiFi Connection
 void setup_wifi() {
 
@@ -107,23 +119,43 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if (metodo=="AbrirCompuertas") {  //Set led status and update attribute value via MQTT
       
       AbrirCompuertas();
+      
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 2}");
     }
     if (metodo=="CerrarCompuertas") {  //Set led status and update attribute value via MQTT
       
       CerrarCompuertas();
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 0}");
     }
 
     if (metodo=="PrenderLeds") {
-      deserializeJson(Parametros, incoming_message["params"]);
-      char ibu = Parametros["Ibuprofeno"];
-      char ome = Parametros["Omeoprazol"];
-      char asp = Parametros["Aspirina"];
-      char nov = Parametros["Novemina"];
+
+      String ibu = incoming_message["params"]["Ibuprofeno"];
+      String ome = incoming_message["params"]["Omeoprazol"];
+      String asp = incoming_message["params"]["Aspirina"];
+      String nov = incoming_message["params"]["Novemina"];
       Serial.println("Ibuprofeno: "+ ibu);
       Serial.println("Omeoprazol: "+ ome);
       Serial.println("Aspirina: "+ asp);
       Serial.println("Novemina: "+ nov);
-      
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 1}");
+        
+    }
+
+    if (metodo=="CorregirError") {
+      Serial.print("CE");
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 2}");
     }
   }
 }
@@ -156,10 +188,7 @@ void setup() {
   bool estado = false;
   SPI.begin();        //Iniciamos el Bus SPI
   mfrc522.PCD_Init(); // Iniciamos  el MFRC522
-  pinMode(16,OUTPUT);
-  digitalWrite(16,HIGH);
-  myServo1.attach(4);
-  myServo1.write(0);
+  pinMode(16,INPUT);
 }
 
 
@@ -172,7 +201,8 @@ void loop() {
   client.loop();
 
   verificarRFID();
- 
+
+  DeobunceBoton();
 }
 
 void AbrirCompuertas(){
@@ -217,6 +247,58 @@ void verificarRFID(){
     Serial.print(" ");
   }   
  
+}
+
+void DeobunceBoton(){
+  int reading = digitalRead(boton);
+
+  // check to see if you just pressed the button
+  // (i.e. the input went from LOW to HIGH), and you've waited long enough
+  // since the last press to ignore any noise:
+
+  // If the switch changed, due to noise or pressing:
+  if (reading != lastButtonState) {
+    // reset the debouncing timer
+    Serial.print("1");
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    // whatever the reading is at, it's been there for longer than the debounce
+    // delay, so take it as the actual current state:
+    
+
+    // if the button state has changed:
+    if (reading != buttonState) {
+      buttonState = reading;
+      Serial.print("3");
+
+      // only toggle the LED if the new button state is HIGH
+      if (buttonState == HIGH) {
+        Serial.print("4");
+        VerificarStock();
+      }
+    }
+  }
+  lastButtonState = reading;
+}
+
+void VerificarStock(){
+  DynamicJsonDocument resp(256);
+  resp["CStockIbu"] = 7;
+  resp["CStockOmeo"] = 8;
+  resp["CStockAspi"] = 5;
+  resp["CStockNove"] = 3;
+
+  char buffer[256];
+  serializeJson(resp, buffer);
+  
+  client.publish("v1/devices/me/attributes", buffer);
+  
+  Serial.print("Publish attributes: ");
+  Serial.println(buffer);
+  Serial.print(" ");
+
 }
 
 void mandarEstadoLED(){
