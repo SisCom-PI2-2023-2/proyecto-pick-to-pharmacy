@@ -1,0 +1,3 @@
+ String localResponseTopic = String(topic);
+    localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+    client.publish(localResponseTopic.c_str(), message);
