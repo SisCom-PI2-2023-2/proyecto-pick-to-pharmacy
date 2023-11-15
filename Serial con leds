@@ -1,0 +1,34 @@
+void setup() {
+  Serial.begin(9600);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+}
+
+void loop() {
+  if(Serial.available() > 0){
+    int input = Serial.read();
+    if(input == 'Z'){
+      //Serial.print(Serial.read());
+      digitalWrite(3, HIGH);
+      //delay(500);
+    }
+    else if(input == 'B'){
+      //Serial.print(Serial.read());
+      digitalWrite(4, HIGH);
+      //delay(500);
+    }
+    else if(input == 'C'){
+      //Serial.print(Serial.read());
+      digitalWrite(5, HIGH);
+      //delay(500);
+    }
+    else if(input == 'D'){
+      //Serial.print(Serial.read());
+      digitalWrite(6, HIGH);
+      //delay(500);
+    }
+    
+  }
+}
