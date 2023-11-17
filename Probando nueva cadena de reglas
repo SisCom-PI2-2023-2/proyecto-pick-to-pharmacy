@@ -10,6 +10,8 @@
 #include <ArduinoJson.h>
 #include <MFRC522.h>   //GithubCommunity Version 1.4.10
 
+
+
 // Update these with values suitable for your network.
 const char* ssid = "HUAWEI-IoT";
 const char* password = "ORTWiFiIoT";
@@ -20,7 +22,12 @@ const char* token = "xtYELlImXmVGtgtR2JBt";
 MFRC522 mfrc522(SS_PIN, RST_PIN); //Creamos el objeto para el RC522
 byte newUID[4];
 int ultimoEstadoLed = 0;
+int estado_servidor = 0;
 
+String ibu = "";
+String ome = "";
+String asp = "";
+String nov = "";
 
 // Connection objects
 WiFiClient espClient;
@@ -61,7 +68,7 @@ void setup_wifi() {
   delay(10);
   // We start by connecting to a WiFi network
   Serial.println();
-  Serial.print("Connecting to ");
+  Serial.print("connecting to ");
   Serial.println(ssid);
 
   WiFi.mode(WIFI_STA);
@@ -75,8 +82,8 @@ void setup_wifi() {
   randomSeed(micros());
 
   Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println("wifi connected");
+  Serial.println("ip address: ");
   Serial.println(WiFi.localIP());
 }
 
@@ -85,15 +92,16 @@ void setup_wifi() {
 
 void callback(char* topic, byte* payload, unsigned int length) {
   //log to console
-  Serial.print("Message arrived [");
-  Serial.print(topic);
-  Serial.print("] ");
-  for (int i = 0; i < length; i++) {
-    Serial.print((char)payload[i]);
-  }
-  Serial.println();
+  //Serial.print("Message arrived [");
+  //Serial.print(topic);
+  //Serial.print("] ");
+  //for (int i = 0; i < length; i++) {
+    //Serial.print((char)payload[i]);
+  //}
+  //Serial.println();
 
   //convert topic to string to parse
+
   String _topic = String(topic);
   
   if (_topic.startsWith("v1/devices/me/rpc/request/")) {
@@ -117,37 +125,68 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
     
     if (metodo=="AbrirCompuertas") {  //Set led status and update attribute value via MQTT
+        if(ibu != "0"){
+          Serial.print("W");
+        }
+        if(ome != "0"){
+          Serial.print("X");
+        }
+        if(asp != "0"){
+          Serial.print("Y");
+        }
+        if(nov != "0"){
+          Serial.print("Z");
+        }
       
-      AbrirCompuertas();
-      
+   
       String localResponseTopic = String(topic);
       localResponseTopic.replace("request", "response");  //change topic to preserver requestID
       client.publish(localResponseTopic.c_str(), "{\"Estado\": 2}");
+
+      estado_servidor = 2;
     }
     if (metodo=="CerrarCompuertas") {  //Set led status and update attribute value via MQTT
       
-      CerrarCompuertas();
+      Serial.print("C");
+      
 
       String localResponseTopic = String(topic);
       localResponseTopic.replace("request", "response");  //change topic to preserver requestID
       client.publish(localResponseTopic.c_str(), "{\"Estado\": 0}");
+
+      estado_servidor = 0;
     }
 
     if (metodo=="PrenderLeds") {
 
-      String ibu = incoming_message["params"]["Ibuprofeno"];
-      String ome = incoming_message["params"]["Omeoprazol"];
-      String asp = incoming_message["params"]["Aspirina"];
-      String nov = incoming_message["params"]["Novemina"];
-      Serial.println("Ibuprofeno: "+ ibu);
-      Serial.println("Omeoprazol: "+ ome);
-      Serial.println("Aspirina: "+ asp);
-      Serial.println("Novemina: "+ nov);
+      ibu = String(incoming_message["params"]["Ibuprofeno"]);
+      ome = String(incoming_message["params"]["Omeoprazol"]);
+      asp = String(incoming_message["params"]["Aspirina"]);
+      nov = String(incoming_message["params"]["Novemina"]);
+      
+      if(ibu != "0"){
+        Serial.print("I");
+      }
+      if(ome != "0"){
+        Serial.print("O");
+      }
+      if(asp != "0"){
+        Serial.print("A");
+      }
+      if(nov != "0"){
+        Serial.print("N");
+      }
+
+      //Serial.println("Ibuprofeno: "+ ibu);
+      //Serial.println("Omeoprazol: "+ ome);
+      //Serial.println("Aspirina: "+ asp);
+      //Serial.println("Novemina: "+ nov);
 
       String localResponseTopic = String(topic);
       localResponseTopic.replace("request", "response");  //change topic to preserver requestID
       client.publish(localResponseTopic.c_str(), "{\"Estado\": 1}");
-        
+
+      estado_servidor = 1;
     }
 
     if (metodo=="CorregirError") {
@@ -163,9 +202,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
+    Serial.print("attempting mqtt connection...");
     // Attempt to connect - client.connect(DEVICE_ID, TOKEN, TOKEN)
-    if (client.connect("NODEMCU Nuevo", token, token )) {
+    if (client.connect("nodemcu nuevo", token, token )) {
       Serial.println("connected");
       // Once connected, subscribe to rpc topic
       client.subscribe("v1/devices/me/rpc/request/+");
@@ -200,17 +239,16 @@ void loop() {
   }
   client.loop();
 
-  verificarRFID();
+  if (estado_servidor == 1){
+    verificarRFID();
+  }
 
-  DeobunceBoton();
-}
+  
+  if (estado_servidor == 2){
+    DeobunceBoton();
+  }
 
-void AbrirCompuertas(){
-    Serial.print("AC");
-}
-
-void CerrarCompuertas(){
-    Serial.print("CC");
+  
 }
 
 void verificarRFID(){
@@ -227,13 +265,14 @@ void verificarRFID(){
       // Terminamos la lectura de la tarjeta  actual
 
       for (int i = 0; i < mfrc522.uid.size; i++) {
-        Serial.print(newUID[i], HEX);
+        //Serial.print(newUID[i], HEX);
+        Serial.print("mandando tarjeta");
         myarray += String(newUID[i], HEX);
       }
       Serial.println();
       mfrc522.PICC_HaltA();
     }
-    Serial.println(myarray);
+    //Serial.println(myarray);
     //Send value as telemetry
     DynamicJsonDocument resp(256);
     resp["nuevaTarjeta"] = myarray;
@@ -242,11 +281,10 @@ void verificarRFID(){
     
     client.publish("v1/devices/me/attributes", buffer);
     
-    Serial.print("Publish attributes: ");
-    Serial.println(buffer);
-    Serial.print(" ");
+    //Serial.print("publish attributes: ");
+    //Serial.println(buffer);
+    //Serial.print(" ");
   }   
- 
 }
 
 void DeobunceBoton(){
@@ -259,7 +297,6 @@ void DeobunceBoton(){
   // If the switch changed, due to noise or pressing:
   if (reading != lastButtonState) {
     // reset the debouncing timer
-    Serial.print("1");
     lastDebounceTime = millis();
   }
 
@@ -271,11 +308,9 @@ void DeobunceBoton(){
     // if the button state has changed:
     if (reading != buttonState) {
       buttonState = reading;
-      Serial.print("3");
 
       // only toggle the LED if the new button state is HIGH
       if (buttonState == HIGH) {
-        Serial.print("4");
         VerificarStock();
       }
     }
@@ -294,27 +329,6 @@ void VerificarStock(){
   serializeJson(resp, buffer);
   
   client.publish("v1/devices/me/attributes", buffer);
-  
-  Serial.print("Publish attributes: ");
-  Serial.println(buffer);
-  Serial.print(" ");
 
 }
 
-void mandarEstadoLED(){
-    int estadoLED = digitalRead(16);
-    //Hacer un if para que haga una comparacion del estado actual con el anterior y ver si cambio de estado para mandar el atributo.
-    if(estadoLED != ultimoEstadoLed){
-        ultimoEstadoLed = estadoLED;
-        DynamicJsonDocument resp(256);
-        resp["estadoLED"] = estadoLED;
-        char buffer[256];
-        serializeJson(resp, buffer);
-        
-        client.publish("v1/devices/me/attributes", buffer);
-        
-        Serial.print("Publish attributes: ");
-        Serial.println(buffer);
-        Serial.print(" ");      
-      }
-}
