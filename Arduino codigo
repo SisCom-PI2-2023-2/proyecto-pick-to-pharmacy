@@ -1,0 +1,59 @@
+#include <Servo.h>
+
+#define Led1 3
+#define Led2 4
+#define Led3 5
+#define Led4 6
+Servo ServoIbu;
+Servo ServoOmeo;
+Servo ServoAspi;
+Servo ServoNove;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(Led1, OUTPUT);
+  pinMode(Led2, OUTPUT);
+  pinMode(Led3, OUTPUT);
+  pinMode(Led4, OUTPUT);
+  ServoIbu.attach(13);
+  ServoOmeo.attach(12);
+  ServoAspi.attach(11);
+  ServoNove.attach(10);  
+}
+
+void loop() {
+    if(Serial.available()){
+      int lectura = Serial.read();
+
+      if(lectura == 'I'){
+        digitalWrite(Led1, HIGH);
+      }
+      else if(lectura == 'O'){
+        digitalWrite(Led2, HIGH);
+      }
+      else if(lectura == 'A'){
+        digitalWrite(Led3, HIGH);
+      }
+      else if(lectura == 'N'){
+        digitalWrite(Led4, HIGH);
+      }
+      else if(lectura == 'W'){
+        ServoIbu.write(180);
+      }
+      else if(lectura == 'X'){
+        ServoOmeo.write(180);
+      }
+      else if(lectura == 'Y'){
+        ServoAspi.write(180);
+      }
+      else if(lectura == 'Z'){
+        ServoNove.write(180);
+      }
+      else if(lectura == 'C'){
+        ServoIbu.write(0);
+        ServoOmeo.write(0);
+        ServoAspi.write(0);
+        ServoNove.write(0);
+      }
+    }
+}
