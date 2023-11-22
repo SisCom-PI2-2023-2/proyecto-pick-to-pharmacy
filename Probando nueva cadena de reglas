@@ -4,7 +4,6 @@
  Andres Ferragut
  ferragut@fi365.ort.edu.uy
 */
-#include <Servo.h>
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
@@ -47,9 +46,6 @@ DynamicJsonDocument Parametros(256);
 
 //Fake telemetry
 int value = 0;
-
-//Servos
-Servo myServo1;
 
 //Variables debounce boton
 #define boton 16
@@ -255,6 +251,7 @@ void verificarRFID(){
   String myarray = "";
   
  if ( mfrc522.PICC_IsNewCardPresent()) {
+  Serial.print("hola");
     //Seleccionamos una tarjeta
     if ( mfrc522.PICC_ReadCardSerial())
     {
@@ -266,7 +263,6 @@ void verificarRFID(){
 
       for (int i = 0; i < mfrc522.uid.size; i++) {
         //Serial.print(newUID[i], HEX);
-        Serial.print("mandando tarjeta");
         myarray += String(newUID[i], HEX);
       }
       Serial.println();
@@ -320,10 +316,21 @@ void DeobunceBoton(){
 
 void VerificarStock(){
   DynamicJsonDocument resp(256);
-  resp["CStockIbu"] = 7;
-  resp["CStockOmeo"] = 8;
-  resp["CStockAspi"] = 5;
-  resp["CStockNove"] = 3;
+
+  int contador = 0;
+  char cantidades[4];
+  
+  Serial.print("M");
+  while (contador < 4){
+    if (Serial.available()){
+      cantidades[contador] = Serial.read();
+      contador++;
+    }
+  }
+  resp["CStockIbu"] = cantidades[0];
+  resp["CStockOmeo"] = cantidades[1];
+  resp["CStockAspi"] = cantidades[2];
+  resp["CStockNove"] = cantidades[3];
 
   char buffer[256];
   serializeJson(resp, buffer);
@@ -331,4 +338,3 @@ void VerificarStock(){
   client.publish("v1/devices/me/attributes", buffer);
 
 }
-
