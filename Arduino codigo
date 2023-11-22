@@ -4,10 +4,21 @@
 #define Led2 4
 #define Led3 5
 #define Led4 6
+#define trigIbu 22
+#define echoIbu 30
+#define trigOmeo 23
+#define echoOmeo 31
+#define trigAspi 24
+#define echoAspi 32
+#define trigNove 25
+#define echoNove 33
 Servo ServoIbu;
 Servo ServoOmeo;
 Servo ServoAspi;
 Servo ServoNove;
+float espacio[4] = {2, 2, 2, 2};
+float grosor[4] = {2, 2, 2, 2};
+int cantMax[4] = {10, 10, 10, 10};
 
 void setup() {
   Serial.begin(9600);
@@ -18,7 +29,15 @@ void setup() {
   ServoIbu.attach(13);
   ServoOmeo.attach(12);
   ServoAspi.attach(11);
-  ServoNove.attach(10);  
+  ServoNove.attach(10);
+  pinMode(trigIbu, OUTPUT);
+  pinMode(echoIbu, INPUT);
+  pinMode(trigOmeo, OUTPUT);
+  pinMode(echoOmeo, INPUT);
+  pinMode(trigAspi, OUTPUT);
+  pinMode(echoAspi, INPUT);
+  pinMode(trigNove, OUTPUT);
+  pinMode(echoNove, INPUT);
 }
 
 void loop() {
@@ -54,6 +73,23 @@ void loop() {
         ServoOmeo.write(0);
         ServoAspi.write(0);
         ServoNove.write(0);
+      }
+      else if(lectura == 'M'){
+        for(int i=0; i<4;i++){
+        // Clears the trigPin
+        digitalWrite(trigIbu + i, LOW);
+        delayMicroseconds(2);
+        // Sets the trigPin on HIGH state for 10 micro seconds
+        digitalWrite(trigIbu + i, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigIbu + i, LOW);
+        // Reads the echoPin, returns the sound wave travel time in microseconds
+        int duration = pulseIn(echoIbu + i, HIGH);
+        // Calculating the distance
+        int distance = duration * 0.034 / 2;
+        int cantidad = cantMax[i] - int(round((distance - espacio[i])/grosor[i]));
+        Serial.print(cantidad);
+        }
       }
     }
 }
