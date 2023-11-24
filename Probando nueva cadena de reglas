@@ -8,6 +8,8 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 #include <MFRC522.h>   //GithubCommunity Version 1.4.10
+#include "Wire.h"
+#include <LiquidCrystal_I2C.h>
 
 
 
@@ -49,6 +51,12 @@ int value = 0;
 
 //Variables debounce boton
 #define boton 16
+
+//LCDs
+LiquidCrystal_I2C LCDibu(0x27,16,2);
+LiquidCrystal_I2C LCDomeo(0x26,16,2);
+LiquidCrystal_I2C LCDaspi(0x25,16,2);
+LiquidCrystal_I2C LCDnove(0x23,16,2);
 
 int buttonState;            // the current reading from the input pin
 int lastButtonState = LOW;  // the previous reading from the input pin
@@ -143,8 +151,21 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
     if (metodo=="CerrarCompuertas") {  //Set led status and update attribute value via MQTT
       
-      Serial.print("C");
+      LCDibu.setCursor(1, 1);
+      LCDibu.print("              ");
+      LCDibu.noDisplay();
       
+      LCDomeo.setCursor(1, 1);
+      LCDomeo.print("              ");
+      LCDomeo.noDisplay();
+      
+      LCDaspi.setCursor(1, 1);
+      LCDaspi.print("              ");
+      LCDaspi.noDisplay();
+      
+      LCDnove.setCursor(1, 1);
+      LCDnove.print("              ");
+      LCDnove.noDisplay();
 
       String localResponseTopic = String(topic);
       localResponseTopic.replace("request", "response");  //change topic to preserver requestID
@@ -162,16 +183,29 @@ void callback(char* topic, byte* payload, unsigned int length) {
       
       if(ibu != "0"){
         Serial.print("I");
+        LCDibu.setCursor(8, 1);
+        LCDibu.print("CANT: "+ibu);
+        LCDibu.display();
       }
       if(ome != "0"){
         Serial.print("O");
+        LCDomeo.setCursor(8, 1);
+        LCDomeo.print("CANT: "+ome);
+        LCDomeo.display();
       }
       if(asp != "0"){
         Serial.print("A");
+        LCDaspi.setCursor(8, 1);
+        LCDaspi.print("CANT: "+asp);
+        LCDaspi.display();
       }
       if(nov != "0"){
         Serial.print("N");
+        LCDnove.setCursor(8, 1);
+        LCDnove.print("CANT: "+nov);
+        LCDnove.display();
       }
+
 
       //Serial.println("Ibuprofeno: "+ ibu);
       //Serial.println("Omeoprazol: "+ ome);
@@ -186,7 +220,28 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
 
     if (metodo=="CorregirError") {
-      Serial.print("CE");
+
+      String erribu = String(incoming_message["params"]["ErrIbu"]);
+      String errome = String(incoming_message["params"]["ErrOmeo"]);
+      String errasp = String(incoming_message["params"]["ErrAspi"]);
+      String errnov = String(incoming_message["params"]["ErrNove"]);
+
+      if(erribu != "0"){
+        LCDibu.setCursor(1, 1);
+        LCDibu.print("Error al sacar");
+      }
+      if(errome != "0"){
+        LCDomeo.setCursor(1, 1);
+        LCDibu.print("Error al sacar");
+      }
+      if(errasp != "0"){
+        LCDaspi.setCursor(1, 1);
+        LCDibu.print("Error al sacar");
+      }
+      if(errnov != "0"){
+        LCDnove.setCursor(1, 1);
+        LCDibu.print("Error al sacar");
+      }
 
       String localResponseTopic = String(topic);
       localResponseTopic.replace("request", "response");  //change topic to preserver requestID
@@ -224,6 +279,26 @@ void setup() {
   SPI.begin();        //Iniciamos el Bus SPI
   mfrc522.PCD_Init(); // Iniciamos  el MFRC522
   pinMode(16,INPUT);
+  
+  LCDibu.init();
+  LCDibu.backlight();
+  LCDibu.setCursor(1, 0);
+  LCDibu.print("IBUPROFENO");
+
+  LCDomeo.init();
+  LCDomeo.backlight();
+  LCDomeo.setCursor(1, 0);
+  LCDomeo.print("OMEOPRAZOL");
+  
+  LCDaspi.init();
+  LCDaspi.backlight();
+  LCDaspi.setCursor(1, 0);
+  LCDaspi.print("ASPIRINA");
+  
+  LCDnove.init();
+  LCDnove.backlight();
+  LCDnove.setCursor(1, 0);
+  LCDnove.print("NOVEMINA");
 }
 
 
@@ -241,7 +316,9 @@ void loop() {
 
   
   if (estado_servidor == 2){
-    DeobunceBoton();
+     DeobunceBoton();
+    
+ 
   }
 
   
@@ -251,7 +328,6 @@ void verificarRFID(){
   String myarray = "";
   
  if ( mfrc522.PICC_IsNewCardPresent()) {
-  Serial.print("hola");
     //Seleccionamos una tarjeta
     if ( mfrc522.PICC_ReadCardSerial())
     {
@@ -306,7 +382,7 @@ void DeobunceBoton(){
       buttonState = reading;
 
       // only toggle the LED if the new button state is HIGH
-      if (buttonState == HIGH) {
+      if (buttonState == LOW) {
         VerificarStock();
       }
     }
@@ -318,19 +394,20 @@ void VerificarStock(){
   DynamicJsonDocument resp(256);
 
   int contador = 0;
-  char cantidades[4];
+  int cantidades[4];
   
   Serial.print("M");
   while (contador < 4){
     if (Serial.available()){
       cantidades[contador] = Serial.read();
+      
       contador++;
     }
   }
-  resp["CStockIbu"] = cantidades[0];
-  resp["CStockOmeo"] = cantidades[1];
-  resp["CStockAspi"] = cantidades[2];
-  resp["CStockNove"] = cantidades[3];
+  resp["CStockIbu"]  = cantidades[0] - 48;
+  resp["CStockOmeo"] = cantidades[1] - 48;
+  resp["CStockAspi"] = cantidades[2] - 48;
+  resp["CStockNove"] = cantidades[3] - 48;
 
   char buffer[256];
   serializeJson(resp, buffer);
