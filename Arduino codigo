@@ -73,6 +73,10 @@ void loop() {
         ServoOmeo.write(0);
         ServoAspi.write(0);
         ServoNove.write(0);
+        digitalWrite(Led1, LOW);
+        digitalWrite(Led2, LOW);
+        digitalWrite(Led3, LOW);
+        digitalWrite(Led4, LOW);
       }
       else if(lectura == 'M'){
         for(int i=0; i<4;i++){
