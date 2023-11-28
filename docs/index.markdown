@@ -7,7 +7,9 @@ layout: home
 
 Esta es la página principal. La pueden ajustar a su gusto usando [markdown](https://www.markdownguide.org/basic-syntax/)
 
-## Ejemplo
+<body>
+  <h1>Ejemplo</h1>
+</body>
 
 Así se agrega una imagen. En general se guardan en la carpeta `assets`:
 
