@@ -6,6 +6,9 @@ permalink: /equipo/
 
 ## Información del equipo...
 
-Matías Franco (Nº 223661)  
-Ignacio Ortiz (Nº 303624)  
-Agustina Viera (Nº 239004)  
+:Matías Franco (Nº 223661):  
+![Matias](/assets/Matias.png)  
+:Ignacio Ortiz (Nº 303624):  
+![Nacho](/assets/Nacho.png)  
+:Agustina Viera (Nº 239004):  
+![Agus](/assets/Agus.png)  
