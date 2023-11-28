@@ -6,6 +6,6 @@ permalink: /equipo/
 
 ## Información del equipo...
 
-Matías Franco (Nº 223661)
-Ignacio Ortiz (Nº 303624)
-Agustina Viera (Nº 239004)
+Matías Franco (Nº 223661)<\p>
+Ignacio Ortiz (Nº 303624)<\p>
+Agustina Viera (Nº 239004)<\p>
