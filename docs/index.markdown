@@ -6,7 +6,7 @@ layout: home
 ---
 
 Esta es la página principal. La pueden ajustar a su gusto usando [markdown](https://www.markdownguide.org/basic-syntax/)
-
+<link rel="stylesheet" type="text/css" href="estilo.css">
 <body>
   <h1>Ejemplo</h1>
 </body>
