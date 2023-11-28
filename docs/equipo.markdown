@@ -6,4 +6,6 @@ permalink: /equipo/
 
 ## Información del equipo...
 
-Pueden poner links y fotos!
+Matías Franco (Nº 223661)
+Ignacio Ortiz (Nº 303624)
+Agustina Viera (Nº 239004)
