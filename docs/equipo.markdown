@@ -4,11 +4,12 @@ title: Equipo
 permalink: /equipo/
 ---
 
-## Información del equipo...
+## Sobre nosotros...
+:---:  
 
-:Matías Franco (Nº 223661):  
+Matías Franco (Nº 223661)  
 ![Matias](/assets/Matias.png)  
-:Ignacio Ortiz (Nº 303624):  
+Ignacio Ortiz (Nº 303624)  
 ![Nacho](/assets/Nacho.png)  
-:Agustina Viera (Nº 239004):  
+Agustina Viera (Nº 239004)  
 ![Agus](/assets/Agus.png)  
