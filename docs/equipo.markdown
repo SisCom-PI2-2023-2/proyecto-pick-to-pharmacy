@@ -2,10 +2,10 @@
 layout: page
 title: Equipo
 permalink: /equipo/
----
+:---:
 
 ## Sobre nosotros...
-:---:  
+
 
 Matías Franco (Nº 223661)  
 ![Matias](/assets/Matias.png)  
