@@ -6,7 +6,8 @@ permalink: /equipo/
 
 ## Sobre nosotros...
 
-<div style="text-align: center">
+<div style="text-align: center">  
+  
 Matías Franco (Nº 223661)  
 ![Matias](/assets/Matias.png)  
 Ignacio Ortiz (Nº 303624)  
