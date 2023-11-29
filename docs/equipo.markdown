@@ -3,10 +3,9 @@ layout: page
 title: Equipo
 permalink: /equipo/
 ---
-
+<link rel="stylesheet" type="text/css" href="estilo.css">
 ## Sobre nosotros...
-
-<center>  
+ 
 
 Matías Franco (Nº 223661)  
  <div class="centrar">
