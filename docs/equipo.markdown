@@ -10,21 +10,21 @@ permalink: /equipo/
 
 <body class:sobreNosotros>
 
-Somos un grupo de estudiantes de Ingenieria en Electrónica cursando la materia Proyecto Integrador 2. 
+<p> Somos un grupo de estudiantes de Ingenieria en Electrónica cursando la materia Proyecto Integrador 2.</p>
 
-Conocemos y acordamos las reglas de netiqueta.
+<p>Conocemos y acordamos las reglas de netiqueta.</p>  
 
 
-Matías Franco (Nº 223661)  
+<p>Matías Franco (Nº 223661)</p>  
 
 ![Matias](/assets/Matias.png) 
 
-Ignacio Ortiz (Nº 303624)  
+<p>Ignacio Ortiz (Nº 303624)</p>  
 
 ![Nacho](/assets/Nacho.png)  
 
-Agustina Viera (Nº 239004)  
+<p>Agustina Viera (Nº 239004)</p>
 
 ![Agus](/assets/Agus.png)  
-  
+
 </body>
