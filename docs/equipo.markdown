@@ -8,11 +8,9 @@ permalink: /equipo/
 
 ## Sobre nosotros...
  
-
+<article>
 Matías Franco (Nº 223661)  
- <div class="centrar">
-    <img src="MatiasF.jpg">
-  </div>
+![Matias](/assets/Matias.png) 
 
 
 Ignacio Ortiz (Nº 303624)  
@@ -21,5 +19,5 @@ Ignacio Ortiz (Nº 303624)
 Agustina Viera (Nº 239004)  
 ![Agus](/assets/Agus.png)  
   
-
+</article>
 
