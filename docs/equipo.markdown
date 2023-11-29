@@ -6,7 +6,8 @@ permalink: /equipo/
 
 ## Sobre nosotros...
 
-  
+<html>  
+    
 <div style="text-align: center">  
   
 Matías Franco (Nº 223661)  
@@ -43,3 +44,5 @@ Agustina Viera (Nº 223661)
 ![Agus](/assets/Agus.png)  
 
 </center>
+
+</html>  
