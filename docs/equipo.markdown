@@ -13,7 +13,11 @@ Matías Franco (Nº 223661)
   
 </div>  
 
+<body>  
+  
 <img src="/assets/Matias.png" alt="Matias" display: block margin-left: auto margin-right: auto>  
+
+</body>  
 
 <div style="text-align: center;">  
   
