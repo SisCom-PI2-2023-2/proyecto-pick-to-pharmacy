@@ -8,8 +8,6 @@ permalink: /equipo/
 
 ## Sobre nosotros...
 
-<body class:sobrenosotros>
-
 <p> Somos un grupo de estudiantes de Ingenieria en Electrónica cursando la materia Proyecto Integrador 2.</p>
 
 <p>Conocemos y acordamos las reglas de netiqueta.</p>  
@@ -27,4 +25,4 @@ permalink: /equipo/
 
 ![Agus](/assets/Agus.png)  
 
-</body>
+
