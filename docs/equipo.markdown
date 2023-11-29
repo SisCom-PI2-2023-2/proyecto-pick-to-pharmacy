@@ -10,7 +10,7 @@ permalink: /equipo/
 
 Matías Franco (Nº 223661)  
  <div class="centrar">
-    <img src="MatiasF.jpg" alt="Matias">
+    <img src="MatiasF.jpg">
   </div>
 
 
