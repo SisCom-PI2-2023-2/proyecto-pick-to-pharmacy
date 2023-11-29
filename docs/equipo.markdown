@@ -9,7 +9,10 @@ permalink: /equipo/
 <center>  
 
 Matías Franco (Nº 223661)  
-![Matias](/assets/Matias.png)  
+ <div class="centrar">
+    <img src="Matias.png" alt="Matias">
+  </div>
+
 
 Ignacio Ortiz (Nº 303624)  
 ![Nacho](/assets/Nacho.png)  
