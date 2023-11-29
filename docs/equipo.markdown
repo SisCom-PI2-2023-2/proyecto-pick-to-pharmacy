@@ -4,6 +4,8 @@ title: Equipo
 permalink: /equipo/
 ---
 <link rel="stylesheet" type="text/css" href="estilo.css">
+
+
 ## Sobre nosotros...
  
 
@@ -19,5 +21,5 @@ Ignacio Ortiz (Nº 303624)
 Agustina Viera (Nº 239004)  
 ![Agus](/assets/Agus.png)  
   
-</center>
+
 
