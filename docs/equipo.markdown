@@ -8,7 +8,7 @@ permalink: /equipo/
 
 ## Sobre nosotros...
 
-<body class: sobrenosotros>
+<body class:sobrenosotros>
 
 <p> Somos un grupo de estudiantes de Ingenieria en Electrónica cursando la materia Proyecto Integrador 2.</p>
 
