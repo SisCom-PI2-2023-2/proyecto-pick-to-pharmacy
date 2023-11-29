@@ -4,7 +4,7 @@ title: Equipo
 permalink: /equipo/
 ---
 
-<link rel="stylesheet" type="text/css" href="estilo.css">
+<link rel="stylesheet" type="text/css" href="estiloequipo.css">
 
 ## Sobre nosotros...
 
