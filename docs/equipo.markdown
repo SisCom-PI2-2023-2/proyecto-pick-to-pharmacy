@@ -7,18 +7,13 @@ permalink: /equipo/
 ## Sobre nosotros...
 
   
-<div style="text-align: center;">  
+<div style="text-align: center">  
   
 Matías Franco (Nº 223661)  
   
 </div>  
 
-<center>  
-  
-![Matias](/assets/Matias.png)  
-  
-</center>
-
+<img src="/assets/Matias.png" alt="Matias" display: block margin-left: auto margin-right: auto>  
 
 <div style="text-align: center;">  
   
