@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Prueba
-permalink: /prueba/
+title: Bitacora
+permalink: /bitacora/
 ---
 
-## Página de prueba
+## Nuestra aventura comienza
 
 ---
 
