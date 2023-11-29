@@ -4,9 +4,16 @@ title: Equipo
 permalink: /equipo/
 ---
 
+<link rel="stylesheet" type="text/css" href="estilo.css">
 
 ## Sobre nosotros...
- 
+
+<body class:sobreNosotros>
+
+Somos un grupo de estudiantes de Ingenieria en Electrónica cursando la materia Proyecto Integrador 2. 
+
+Conocemos y acordamos las reglas de netiqueta.
+
 
 Matías Franco (Nº 223661)  
 
@@ -20,3 +27,4 @@ Agustina Viera (Nº 239004)
 
 ![Agus](/assets/Agus.png)  
   
+</body>
