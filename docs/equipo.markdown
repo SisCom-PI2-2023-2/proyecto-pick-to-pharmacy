@@ -15,14 +15,12 @@ permalink: /equipo/
 
 <p>Matías Franco (Nº 223661)</p>  
 
-![Matias](/assets/Matias.png) 
 
 <p>Ignacio Ortiz (Nº 303624)</p>  
 
-![Nacho](/assets/Nacho.png)  
 
 <p>Agustina Viera (Nº 239004)</p>
 
-![Agus](/assets/Agus.png)  
+
 
 
