@@ -15,7 +15,7 @@ Matías Franco (Nº 223661)
 
 <body>  
   
-<img src="/assets/Matias.png" alt="Matias" display: block margin-left: auto margin-right: auto>  
+<img src="https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/docs/assets/Matias.png" alt="Matias" display: block margin-left: auto margin-right: auto>  
 
 </body>  
 
