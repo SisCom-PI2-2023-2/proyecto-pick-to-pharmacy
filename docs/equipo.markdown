@@ -3,6 +3,7 @@ layout: page
 permalink: /equipo/
 ---
 
+
 ## Sobre nosotros...
 
 Somos un grupo de estudiantes de Ingenieria en Electrónica cursando la materia Proyecto Integrador 2.
