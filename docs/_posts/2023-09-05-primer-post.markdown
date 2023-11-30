@@ -1,6 +1,5 @@
 ---
 layout: post
-title:  "Primer post!"
 date:   2023-09-05 14:14:20 -0300
 categories: posts
 ---
