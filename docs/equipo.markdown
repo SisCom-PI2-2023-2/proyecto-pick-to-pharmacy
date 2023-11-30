@@ -1,5 +1,6 @@
 ---
 layout: page
+title: equipo
 permalink: /equipo/
 ---
 ## Sobre nosotros...
