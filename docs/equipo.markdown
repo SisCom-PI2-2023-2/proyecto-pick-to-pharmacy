@@ -1,7 +1,6 @@
 ---
-layout: page
+layout:  page
 title: Equipo
-permalink: /equipo/
 ---
 ## Sobre nosotros...
 _______
