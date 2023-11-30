@@ -2,6 +2,7 @@
 layout:  page
 title: Equipo
 permalink: /equipo/
+description: >- # this means to ignore newlines until "baseurl:"
 ---
 ## Sobre nosotros...
 _______
