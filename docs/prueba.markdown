@@ -18,45 +18,22 @@ Si bien la complejidad de construcción del prototipo es bastante mayo al hacer 
 
 ### Fechas de vencimiento
 
-Otra de las ideas originales del proyecto que no llegaron a ser implementadas fue la del control de fechas de vencimiento. En un principio, se pretendía que el sistema conozca las fechas de vencimiento de todos los medicamentos en las estanterías y que notifique al personal (mediante las leds o una api) cuando se hubieran vencido los productos. Luego de familiarizarnos un poco más con thingsboard encontramos que el límitado manejo de bases de datos de la herramienta hacia del control del stock tan detallado como pretendíamos sería muy complicado.
+Otra de las ideas originales del proyecto que no llegaron a ser implementadas fue la del control de fechas de vencimiento. En un principio, se pretendía que el sistema conozca las fechas de vencimiento de todos los medicamentos en las estanterías y que notifique al personal (mediante las leds o una api) cuando se hubieran vencido los productos. Luego de familiarizarnos un poco más con thingsboard encontramos que el límitado manejo de bases de datos de la herramienta hacia del control del stock tan detallado como pretendíamos sería muy complicado y tomaría muchisimo tiempo, por ésto decidimos no llegamos a implementa el manejo de fechas de vencimiento, optando únicamente por controlar la cantidad de medicamentos de cada tipo que tiene la góndola.
 
----
+###Distinción de empleados
 
-Encabezados
+La distinción entre los distintos empleados del sistema es una función del sistema que perdió un poco de utilidad al hacer un único módulo cómo prototipo. En un principio los empleados estarían no solo asociados a l número de su tarjeta RFID sino a un color de led que indicaría quien debe tomar el pedido. La distinción entre empleados se puede también aplicar de manera que determinados empleados tengan acceso a determinados estantes. Y en caso de tener varías estanterías, se podrían hacer grupos de estanterías (utilizando activos) a las cuales determinados empleados pueden acceder. Éste tipo de mejoras, de manera similar a lo hablado en la parte de modularización, no suponen un cambio muy drástico del funcionamiento del sistema en thingsboard ya que actualmente ya funciona de manera muy similar.
 
-# Encabezado
+### Envío de pedidos, página/app
 
-## Encabezado
+Para recibir pedidos se pretendía usar una página web o mas probablemente una aplicación de celular con la cual un cliente pudiera seleccionar las cantidades de los productos que desea comprar y que éstas se envíen a thingsboard. Para simplificar la comunicación del pedido con thingsboard se terminó optando por utilizar un dashboard público en el cual se seleccionan las cantidades del pedido, éste automaticamente las guarda en thingsboard iniciando el proceso de recepción de pedido.
 
-### Encabezado
+### APIs
 
-#### Encabezado
+Se pretendía en un principio utilizar APIs de calendario y mensajería (mail o sms) para notificar de determinadas cosas. Ésto iba de la mano de la implementación del control de fechas de vencimiento por ejemplo que al final no se implementó, o también para notificar sobre cosas cómo la falta de stock de algún producto determinado o para recibir los pedidos desde una aplicación. Al final, en parte debido a que no se implementó el control de fechas de vencimiento ni la aplicación para envíar pedidos, lo que disminuyó su utilidad, y por falta de tiempo, no llegamos a investigar sobre el funcionamiento de éstas APIs en thingsboard.
 
-##### Encabezado
+### Calibración de sensores
 
----
+A la hora de calibrar los sensores de distancia se fijan dos constantes que despenden del tamaño de las cajas y del stock máximo de cada medicamento. Estos valores nos permiten, utilizando la medida en centímetros del sensor, obtener la cantidad de medicamentos que hay en el estante. Éstos valores de calibración actualmente están escritos en la placa y no se pueden cambiar sin acceder a ella y cambiar el código. Entendemos que lo mejor, y una posible mejora, es que estos valores se guarden en la nube.
 
-Imagen:
-
-![mtstmichel](/assets/mtstmichel.jpg)
-
----
-
-Listas
-
-   1. Primer punto
-   2. Segundo punto
-   3. ...
-
-
-   * Lista no ordenada
-   * con muchos puntos
-   * ...
-
----
-
-Quotes
-
-   > Cita o recuadro
-
-
+Si las constantes de calibración estuvieran en la nube, permitiría cambiar los productos que se venden en una estantería sin tener que acceder a la placa y cambiar las constantes en el código. Sin embargo, sería necesario que la placa pida estas constantes a thingsboard cada vez que se resetea, ésto es algo que simplemente no tuvimos tiempo de implementar sobre el final del proyecto con lo que las constantes quedarán fijas en la placa.
