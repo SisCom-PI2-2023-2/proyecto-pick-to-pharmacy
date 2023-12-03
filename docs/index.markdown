@@ -123,19 +123,19 @@ A su vez posee una estructura adecuada para integrar estos componentes.
 
 ### Material consultado:
 
-[Placa esp8266 pinOut](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/)
-[datasheet esp8266](https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf)
-[Placa Arduino Mega](https://docs.arduino.cc/resources/datasheets/A000067-datasheet.pdf)
-[Direcciónes I2C para las pantallas LCD](https://lastminuteengineers.com/i2c-lcd-arduino-tutorial/#google_vignette)
-[Motores datasheet](https://datasheetspdf.com/pdf-file/1106582/ETC/MG90S/1)
-[Sensores datasheet](https://datasheetspdf.com/pdf-file/1380136/ETC/HC-SR04/1)
-[Pantalla LCD](https://lastminuteengineers.com/i2c-lcd-arduino-tutorial/#google_vignette)
-[RFID datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/download/346106/NXP/MFRC522.html)
-[ThinsBoard documentación](https://thingsboard.io/docs/)
+- [Placa esp8266 pinOut](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/)
+- [datasheet esp8266](https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf)
+- [Placa Arduino Mega](https://docs.arduino.cc/resources/datasheets/A000067-datasheet.pdf)
+- [Direcciónes I2C para las pantallas LCD](https://lastminuteengineers.com/i2c-lcd-arduino-tutorial/#google_vignette)
+- [Motores datasheet](https://datasheetspdf.com/pdf-file/1106582/ETC/MG90S/1)
+- [Sensores datasheet](https://datasheetspdf.com/pdf-file/1380136/ETC/HC-SR04/1)
+- [Pantalla LCD](https://lastminuteengineers.com/i2c-lcd-arduino-tutorial/#google_vignette)
+- [RFID datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/download/346106/NXP/MFRC522.html)
+- [ThinsBoard documentación](https://thingsboard.io/docs/)
 
 ### Enlaces a los códigos del prototipo: 
-[Código Arduino de esp2866](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Probando%20nueva%20cadena%20de%20reglas)
-[Código Arduino Mega](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Arduino%20codigo)
+- [Código Arduino de esp2866](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Probando%20nueva%20cadena%20de%20reglas)
+- [Código Arduino Mega](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Arduino%20codigo)
 
 
 ### Después se incluira fotos del resultado final
