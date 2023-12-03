@@ -5,9 +5,6 @@
 layout: home
 ---
 
-#Picktopharmacy
----
-
 ## Introducción
 ---
 En el presente proyecto se propone desarrollar y construir un sistema semejante al “Pick to Light” ya existente, añadiendo IoT (Internet of things) implementando sensores y actuadores, con el fin de proporcionar una mayor eficiencia y un mejor control al trabajo de los empleados farmacéuticos.
