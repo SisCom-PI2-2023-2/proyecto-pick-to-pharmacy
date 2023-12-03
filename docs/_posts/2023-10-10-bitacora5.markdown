@@ -1,0 +1,25 @@
+---
+layout: post
+title: Semana 5
+categories: posts
+---
+
+# Bitacora
+
+## Semana 5
+
+Dentro de la semana del 10 y 12 de octubre, nuestro equipo se ocupó exclusivamente de investigación sobre la cadena de reglas de Thingsboard y ver el relacionamiento de este con los atributos del servidor y del cliente.
+Se creó un activo porque principalmente se pensaba que se deberian tener secciones diferentes para cada una de las placas a utilizar, ya que el proyecto estaba pensado para usar 1 placa por seccion de medicamentos.
+Entonces como primera prueba de cadena de reglas se realizó lo siguiente:
+
+![](assets/PrimeraCadena.png)  
+
+Dentro de los cuales se definieron los siguientes atributos:  
+
+![](assets/Atributos1.png)  
+
+![](assets/Atributos2.png)  
+
+![](assets/Atributos3.png)  
+
+
