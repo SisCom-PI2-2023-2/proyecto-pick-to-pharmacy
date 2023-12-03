@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Semana 2
 categories: posts
 ---
 
