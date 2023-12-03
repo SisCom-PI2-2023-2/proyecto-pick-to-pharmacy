@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Semana 1
 categories: posts
 ---
 # Bitacora
