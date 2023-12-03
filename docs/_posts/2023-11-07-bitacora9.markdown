@@ -1,0 +1,24 @@
+---
+layout: post
+title: Semana 9
+categories: posts
+---
+
+# Bitacora
+
+## Semana 9
+
+En la semana del 7 y 9 de noviembre se puso en marcha la construcción de la maqueta con las dimensiones ya antes planteadas. A su vez, se modificó la cadena de reglas a su versión final, en la cual era capaz de realizar todos los pasos que se necesitan para cumplir con el objetivo. Finalmente al concluir la semana logramos obtener los siguientes resultados:  
+
+La cadena de reglas quedo de la siguiente manera:
+
+![RuleChain](/assets/CadenaRuleFinal.png)  
+
+![Chain](/assets/CadenaFinal.png)  
+
+Por otro lado, la maqueta armada sin los componentes en ella:  
+
+![Maqueta](/assets/Maqueta.jpg)  
+
+![Maqueta2](/assets/Maqueta2.jpg)  
+
