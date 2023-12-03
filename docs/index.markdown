@@ -56,7 +56,7 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
 ---
 ## Planificado
 ---
-####Pruebas de Concepto:
+#### Pruebas de Concepto:
 
 - Investigación ThingsBoard: 
     - Adquirir un conocimiento profundo del funcionamiento de la plataforma.
@@ -87,6 +87,8 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
         - Utilizamos un código brindado por los docentes, apartir de este implementamos la comunicación entre los componentes.
     - Creación de un Panel: 
         - Desarrollar un panel público dentro de ThingsBoard para que los clientes realicen pedidos y apartir de esto comunicar las instrucciones a los empleados.
+
+
 #### Prototipo 1
 - Una estantería inteligente, que prenda Leds en la zonas que se requiere retirar medicamentos. Va a poseer un RFID capaz de leer una tarjeta, la cual si esta ingresada como habilitada accione los motores para que abran las compuertas así se logrando retirar los medicamentos. También que integre una Pantalla Lcd que muestre los nombres y cantidades de medicamentos a extraer. 
 Luego de realizar estas acciones, se presione un botón que envíe los datos actulizados, obtenidos de los sensores de distancia. Con el fin de confirmar que ya se retiraron adecuadamente lo solicitado en el pedido. Si fue exitoso que se reseten las cantidades y en caso contrario que muestre error en las pantallas Lcd.
