@@ -89,15 +89,19 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
         - Desarrollar un panel público dentro de ThingsBoard para que los clientes realicen pedidos y apartir de esto comunicar las instrucciones a los empleados.
 
 
-#### Prototipo 1
+#### Prototipo 1:
 - Una estantería inteligente, que prenda Leds en la zonas que se requiere retirar medicamentos. Va a poseer un RFID capaz de leer una tarjeta, la cual si esta ingresada como habilitada accione los motores para que abran las compuertas así se logrando retirar los medicamentos. También que integre una Pantalla Lcd que muestre los nombres y cantidades de medicamentos a extraer. 
 Luego de realizar estas acciones, se presione un botón que envíe los datos actulizados, obtenidos de los sensores de distancia. Con el fin de confirmar que ya se retiraron adecuadamente lo solicitado en el pedido. Si fue exitoso que se reseten las cantidades y en caso contrario que muestre error en las pantallas Lcd.
 A su vez posee una estructura adecuada para integrar estos componentes.
 
-#### Prototipo 2
+#### Prototipo 2:
 - Es lo mismo que el prototipo 1, pero incluye implentación de APIS. El cual no realizamos.
 
-#### Problemas y riesgos
+#### Problemas y riesgos:
 - No alcanzaron los pines en la esp8266, por lo tanto tuvimos que utilizar la Arduino Mega para poder conectar todos los elementos.
 - Algunas veces al tener tantos componentes conectados a la vez, no sabíamos de donde origanaba el problema. 
 - En ocaciones se genero un loop en la cadena de reglas dentro de ThingsBoard. Esto provocaba que pasaramos el limite de operaciones en la demo, por consecuencia ya no nos podíamos conectar por una cantidade de tiempo determinado.
+
+
+---
+---
