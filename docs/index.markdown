@@ -104,4 +104,57 @@ A su vez posee una estructura adecuada para integrar estos componentes.
 
 
 ---
+## Los Experimentos
 ---
+### Materiales empleados: 
+- Placa esp8266
+- Placa Arduino Mega
+- 4 Leds
+- 4 Pantalla LCD
+- 1 Botón
+- 4 Sensores de distancia
+- Cables
+- 4 Motores
+- Fuente
+- Resistencias 1kohm y 100 omhs
+- RFID
+- Materiales de estructura
+- ThingsBoard
+
+### Material consultado:
+
+[Placa esp8266 pinOut](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/)
+[datasheet esp8266](https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf)
+[Placa Arduino Mega](https://docs.arduino.cc/resources/datasheets/A000067-datasheet.pdf)
+[Direcciónes I2C para las pantallas LCD](https://lastminuteengineers.com/i2c-lcd-arduino-tutorial/#google_vignette)
+[Motores datasheet](https://datasheetspdf.com/pdf-file/1106582/ETC/MG90S/1)
+[Sensores datasheet](https://datasheetspdf.com/pdf-file/1380136/ETC/HC-SR04/1)
+[Pantalla LCD](https://lastminuteengineers.com/i2c-lcd-arduino-tutorial/#google_vignette)
+[RFID datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/download/346106/NXP/MFRC522.html)
+[ThinsBoard documentación](https://thingsboard.io/docs/)
+
+### Enlaces a los códigos del prototipo: 
+[Código Arduino de esp2866](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Probando%20nueva%20cadena%20de%20reglas)
+[Código Arduino Mega](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Arduino%20codigo)
+
+
+### Después se incluira fotos del resultado final
+
+### Conocimientos adquiridos:
+
+Hemos adquirido diversas habilidades a lo largo del proyecto, entre las cuales se incluyen:
+
+- La aplicación efectiva de conexiones MQTT para facilitar la comunicación entre dispositivos.
+
+- La manipulación experta de variables en formato JSON, permitiéndonos una gestión eficiente de datos.
+
+- La adopción del método de trabajo Scrum, que ha mejorado significativamente la organización y eficiencia en el desarrollo del proyecto.
+
+- La utilización hábil de servicios en la nube y GitHub, brindándonos herramientas para el almacenamiento y colaboración en línea.
+
+- La implementación exitosa de una conexión serial entre dos placas diferentes, demostrando nuestra capacidad para integrar y comunicar dispositivos de manera efectiva.
+
+- La colaboración y coordinación efectiva en equipo, destacando la importancia del trabajo conjunto para lograr nuestros objetivos de manera eficiente y satisfactoria.
+
+---
+
