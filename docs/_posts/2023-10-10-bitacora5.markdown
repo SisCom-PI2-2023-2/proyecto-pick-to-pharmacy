@@ -12,14 +12,14 @@ Dentro de la semana del 10 y 12 de octubre, nuestro equipo se ocupó exclusivame
 Se creó un activo porque principalmente se pensaba que se deberian tener secciones diferentes para cada una de las placas a utilizar, ya que el proyecto estaba pensado para usar 1 placa por seccion de medicamentos.
 Entonces como primera prueba de cadena de reglas se realizó lo siguiente:
 
-![Primera](/assets/PrimeraCadena.png)  
+![Primera](docs/assets/PrimeraCadena.png)  
 
 Dentro de los cuales se definieron los siguientes atributos:  
 
-![Atri1](/assets/Atributos1.png)  
+![Atri1](docs/assets/Atributos1.png)  
 
-![Atri2](/assets/Atributos2.png)  
+![Atri2](docs/assets/Atributos2.png)  
 
-![Atri3](/assets/Atributos3.png) 
+![Atri3](docs/assets/Atributos3.png) 
 
 
