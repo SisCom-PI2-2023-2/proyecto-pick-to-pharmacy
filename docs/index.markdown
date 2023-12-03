@@ -28,6 +28,10 @@ Por lo tanto mantener un buen manejo del inventario, implica que los fármacos s
 ### *Solución:*
 Para estos problemas se diseñó una solución eficaz y práctica. La cual consiste en un sistema de recolección bajo control profesional de pedidos de medicamentos. Permitiendo guiar con una led, al trabajador hacia sector de la estantería donde se encuentra el producto solicitado por el cliente, indicando en una pantalla LCD el nombre del medicamento y la cantidad específica de medicamentos a llevar de ese tipo. Asimismo, para que sea seguro saber quién extrae el medicamento y si está autorizado, cada sección de la estantería consta con una lámina transparente que cubre los fármacos, que solamente se podrá acceder a ellos con una tarjeta de RFID, validando así su extracción. Al pasar la tarjeta, se accionaran los motores que abrirán las compuertas para poder retirar los medicamentos. Al terminar, el trabajador tendrá que presionar un botón para que se verifique si la acción realizada fue correcta, en caso de éxito se cerrarán las compuertas y en caso contrario en el mismo display se mostrará un aviso de error, con el fin de alertar al empleado que no concluyó su trabajo exitosamente.
 
+
+![](assets/manualdeusuario.png)
+
+
 ### *Implementación:*
 
 El desarrollo de este proyecto se dividirá en dos grandes partes, software y hardware. 
