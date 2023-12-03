@@ -22,3 +22,309 @@ Por otro lado, la maqueta armada sin los componentes en ella:
 
 ![Maqueta2](/assets/Maqueta2.jpg)  
 
+A su vez, se modificaron los codigos de la esp8266 para que estos puedan trabajar con la nueva cadena de reglas final. Para esta, ya se incluyeron todos los actuadores, por lo que tambien a destacar se necesito hacer un debounce para el boton para no recibir falsos positivos al presionarlo. El código quedó de la siguiente manera:  
+
+```c++
+
+/*
+ Basic ESP8266 MQTT + Thingsboard Example
+ Based on MQTT ESP8266 example
+ Andres Ferragut
+ ferragut@fi365.ort.edu.uy
+*/
+#include <Servo.h>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+#include <MFRC522.h>   //GithubCommunity Version 1.4.10
+// Update these with values suitable for your network.
+const char* ssid = "HUAWEI-IoT";
+const char* password = "ORTWiFiIoT";
+const char* mqtt_server = "demo.thingsboard.io";
+const char* token = "xtYELlImXmVGtgtR2JBt";
+#define RST_PIN  0   //Pin 9 para el reset del RC522
+#define SS_PIN  15   //Pin 10 para el SS (SDA) del RC522
+MFRC522 mfrc522(SS_PIN, RST_PIN); //Creamos el objeto para el RC522
+byte newUID[4];
+int ultimoEstadoLed = 0;
+// Connection objects
+WiFiClient espClient;
+PubSubClient client(espClient);
+//timestamp of the last telemetry update
+unsigned long lastMsg = 0;
+//buffer sizes and messages
+#define MSG_BUFFER_SIZE  (50)
+char msg[MSG_BUFFER_SIZE];
+char msg2[MSG_BUFFER_SIZE];
+//json document to store incoming messages
+DynamicJsonDocument incoming_message(256);
+DynamicJsonDocument Parametros(256);
+//Fake telemetry
+int value = 0;
+
+//Servos
+Servo myServo1;
+
+//Variables debounce boton
+#define boton 16
+
+int buttonState;            // the current reading from the input pin
+int lastButtonState = LOW;  // the previous reading from the input pin
+
+// the following variables are unsigned longs because the time, measured in
+// milliseconds, will quickly become a bigger number than can be stored in an int.
+unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
+unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
+
+//Initiates WiFi Connection
+void setup_wifi() {
+
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  randomSeed(micros());
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+//This method is called whenever a MQTT message arrives. We must be prepared for any type of incoming message.
+//We are subscribed to RPC Calls: v1/devices/me/rpc/request/+
+void callback(char* topic, byte* payload, unsigned int length) {
+  //log to console
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+  //convert topic to string to parse
+  String _topic = String(topic);
+  
+  if (_topic.startsWith("v1/devices/me/rpc/request/")) {
+    //We are in a request, check request number
+    String _number = _topic.substring(26);
+    //Read JSON Object
+    deserializeJson(incoming_message, payload);
+    String metodo = incoming_message["method"];
+    
+    if (metodo=="checkStatus") {  //Check device status. Expects a response to the same topic number with status=true.
+      
+      char outTopic[128];
+      ("v1/devices/me/rpc/response/"+_number).toCharArray(outTopic,128);
+      
+      DynamicJsonDocument resp(256);
+      resp["status"] = true;
+      char buffer[256];
+      serializeJson(resp, buffer);
+      client.publish(outTopic, buffer);
+    }
+    
+    if (metodo=="AbrirCompuertas") {  //Set led status and update attribute value via MQTT
+
+      AbrirCompuertas();
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 2}");
+    }
+    if (metodo=="CerrarCompuertas") {  //Set led status and update attribute value via MQTT
+
+      CerrarCompuertas();
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 0}");
+    }
+
+    if (metodo=="PrenderLeds") {
+
+      String ibu = incoming_message["params"]["Ibuprofeno"];
+      String ome = incoming_message["params"]["Omeoprazol"];
+      String asp = incoming_message["params"]["Aspirina"];
+      String nov = incoming_message["params"]["Novemina"];
+      Serial.println("Ibuprofeno: "+ ibu);
+      Serial.println("Omeoprazol: "+ ome);
+      Serial.println("Aspirina: "+ asp);
+      Serial.println("Novemina: "+ nov);
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 1}");
+
+    }
+
+    if (metodo=="CorregirError") {
+      Serial.print("CE");
+
+      String localResponseTopic = String(topic);
+      localResponseTopic.replace("request", "response");  //change topic to preserver requestID
+      client.publish(localResponseTopic.c_str(), "{\"Estado\": 2}");
+    }
+  }
+}
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect - client.connect(DEVICE_ID, TOKEN, TOKEN)
+    if (client.connect("NODEMCU Nuevo", token, token )) {
+      Serial.println("connected");
+      // Once connected, subscribe to rpc topic
+      client.subscribe("v1/devices/me/rpc/request/+");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  Serial.begin(9600);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+  bool estado = false;
+  SPI.begin();        //Iniciamos el Bus SPI
+  mfrc522.PCD_Init(); // Iniciamos  el MFRC522
+  pinMode(16,INPUT);
+}
+
+
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  verificarRFID();
+
+  DeobunceBoton();
+}
+
+void AbrirCompuertas(){
+    Serial.print("AC");
+}
+void CerrarCompuertas(){
+    Serial.print("CC");
+}
+void verificarRFID(){
+  String myarray = "";
+  
+ if ( mfrc522.PICC_IsNewCardPresent()) {
+    //Seleccionamos una tarjeta
+    if ( mfrc522.PICC_ReadCardSerial())
+    {
+      // Enviamos serialemente su UID
+      for (int i = 0; i < mfrc522.uid.size; i++) {
+        newUID[i] = mfrc522.uid.uidByte[i];
+      }
+      // Terminamos la lectura de la tarjeta  actual
+      for (int i = 0; i < mfrc522.uid.size; i++) {
+        Serial.print(newUID[i], HEX);
+        myarray += String(newUID[i], HEX);
+      }
+      Serial.println();
+      mfrc522.PICC_HaltA();
+    }
+    Serial.println(myarray);
+    //Send value as telemetry
+    DynamicJsonDocument resp(256);
+    resp["nuevaTarjeta"] = myarray;
+    char buffer[256];
+    serializeJson(resp, buffer);
+    
+    client.publish("v1/devices/me/attributes", buffer);
+    
+    Serial.print("Publish attributes: ");
+    Serial.println(buffer);
+    Serial.print(" ");
+  }   
+
+}
+
+void DeobunceBoton(){
+  int reading = digitalRead(boton);
+
+  // check to see if you just pressed the button
+  // (i.e. the input went from LOW to HIGH), and you've waited long enough
+  // since the last press to ignore any noise:
+
+  // If the switch changed, due to noise or pressing:
+  if (reading != lastButtonState) {
+    // reset the debouncing timer
+    Serial.print("1");
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    // whatever the reading is at, it's been there for longer than the debounce
+    // delay, so take it as the actual current state:
+
+
+    // if the button state has changed:
+    if (reading != buttonState) {
+      buttonState = reading;
+      Serial.print("3");
+
+      // only toggle the LED if the new button state is HIGH
+      if (buttonState == HIGH) {
+        Serial.print("4");
+        VerificarStock();
+      }
+    }
+  }
+  lastButtonState = reading;
+}
+
+void VerificarStock(){
+  DynamicJsonDocument resp(256);
+  resp["CStockIbu"] = 7;
+  resp["CStockOmeo"] = 8;
+  resp["CStockAspi"] = 5;
+  resp["CStockNove"] = 3;
+
+  char buffer[256];
+  serializeJson(resp, buffer);
+
+  client.publish("v1/devices/me/attributes", buffer);
+
+  Serial.print("Publish attributes: ");
+  Serial.println(buffer);
+  Serial.print(" ");
+
+}
+
+void mandarEstadoLED(){
+    int estadoLED = digitalRead(16);
+    //Hacer un if para que haga una comparacion del estado actual con el anterior y ver si cambio de estado para mandar el atributo.
+    if(estadoLED != ultimoEstadoLed){
+        ultimoEstadoLed = estadoLED;
+        DynamicJsonDocument resp(256);
+        resp["estadoLED"] = estadoLED;
+        char buffer[256];
+        serializeJson(resp, buffer);
+        
+        client.publish("v1/devices/me/attributes", buffer);
+        
+        Serial.print("Publish attributes: ");
+        Serial.println(buffer);
+        Serial.print(" ");      
+      }
+}
+
+```
+
+
