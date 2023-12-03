@@ -52,3 +52,50 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
 
 
 ![](assets/prototipo3.png)
+
+---
+## Planificado
+---
+####Pruebas de Concepto:
+
+- Investigación ThingsBoard: 
+    - Adquirir un conocimiento profundo del funcionamiento de la plataforma.
+
+- Desarrollo de Software:
+    - Sensores: 
+        - Buscamos un código en internet para ver su funcionamiento como tal.
+        - Adaptamos el código encontrado, con el fin de que se comunicará con ThingsBoard para si realizar una transmición de datos.
+        - Calibrar la cantidad de medicamentos mediante cálculos y utilizarla como atributo modificable según el tipo de medicamento.
+    - RFID:
+        - Buscamos un código en internet para ver su funcionamiento como tal.
+        - Adaptamos el código encontrado, con el fin de que se comunicará con ThingsBoard, para si realizar una transmición del número Hexadecimal de la tarjeta. Para que luego ese digito fuera agregadado y identificado como una tarjeta habilitada a retirar fármacos.
+        - Lograr la identificación de frecuencias para habilitar adecuadamente a los empleados.
+    - Pantallas LCD: 
+        - Buscamos un código en internet para ver su funcionamiento como tal.
+        - Desarrollar el código encontrado, con el objetivo de colocar los nombres de los medicamentos y sus respectivas cantidades, las cuales se actualizan en cada pedido. 
+    - Motores :
+        - Buscamos un código en internet para ver su funcionamiento como tal.
+    - Arduino Mega:
+        - Implementamos una comunicación serial entre el Arduino Mega y la esp8266, con la intención de que la esp8266 transmita las ordenes a la placa de Arduino Mega. Esto fue necesario ya que la esp8266 no nos podía sutir con la cantidad de pines necesarios.
+    - Leds:
+        - Buscamos un código en internet para ver su funcionamiento como tal.
+        - Realizamos respectivas funciones de apagado y prendido en el código. Se prenderán indicando que zona de la estantería se requiere extraer medicamentos y luego se apagarán después de cerrarse las compuertas.
+    - Botones:
+        - Buscamos un código en internet para realizar el Debounce.
+        - Envía las cantidadeds actulizadas de los medicamentos retirados, con el objetivo de confirmar su exitosa extración. 
+    - Conexión con ThingsBoard:
+        - Utilizamos un código brindado por los docentes, apartir de este implementamos la comunicación entre los componentes.
+    - Creación de un Panel: 
+        - Desarrollar un panel público dentro de ThingsBoard para que los clientes realicen pedidos y apartir de esto comunicar las instrucciones a los empleados.
+#### Prototipo 1
+- Una estantería inteligente, que prenda Leds en la zonas que se requiere retirar medicamentos. Va a poseer un RFID capaz de leer una tarjeta, la cual si esta ingresada como habilitada accione los motores para que abran las compuertas así se logrando retirar los medicamentos. También que integre una Pantalla Lcd que muestre los nombres y cantidades de medicamentos a extraer. 
+Luego de realizar estas acciones, se presione un botón que envíe los datos actulizados, obtenidos de los sensores de distancia. Con el fin de confirmar que ya se retiraron adecuadamente lo solicitado en el pedido. Si fue exitoso que se reseten las cantidades y en caso contrario que muestre error en las pantallas Lcd.
+A su vez posee una estructura adecuada para integrar estos componentes.
+
+#### Prototipo 2
+- Es lo mismo que el prototipo 1, pero incluye implentación de APIS. El cual no realizamos.
+
+#### Problemas y riesgos
+- No alcanzaron los pines en la esp8266, por lo tanto tuvimos que utilizar la Arduino Mega para poder conectar todos los elementos.
+- Algunas veces al tener tantos componentes conectados a la vez, no sabíamos de donde origanaba el problema. 
+- En ocaciones se genero un loop en la cadena de reglas dentro de ThingsBoard. Esto provocaba que pasaramos el limite de operaciones en la demo, por consecuencia ya no nos podíamos conectar por una cantidade de tiempo determinado.
