@@ -66,8 +66,11 @@ void loop() {
 
 }
 ```
+
 - Para el display LCD:
+
 ```c++
+
 
 #include "Wire.h"
 #include "LiquidCrystal_I2C.h"
@@ -91,8 +94,11 @@ void loop() {
 }
 ```
 
+
 - Código que se adicionó para crear el array de hexadecimales:
+
 ```c++
+
 
 byte uid2[4] = {0x34, 0x6F, 0x09, 0x79};
 byte newUID[4];
