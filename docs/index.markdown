@@ -161,4 +161,5 @@ Hemos adquirido diversas habilidades a lo largo del proyecto, entre las cuales s
 - La colaboración y coordinación efectiva en equipo, destacando la importancia del trabajo conjunto para lograr nuestros objetivos de manera eficiente y satisfactoria.
 
 ---
-
+## Bitácora 
+---
