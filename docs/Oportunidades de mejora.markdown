@@ -4,9 +4,7 @@ title: Oportunidades de mejora
 permalink: /aprendizaje/
 ---
 
-## Oportunidades de mejora
-
-Durante el transcurso del semestre, hubieron varios cambios al diseño original del proyecto asi cómo funcionalidades que no llegaron a ser implementadas. A continuación describiremos los más importantes, explicando las causas yu las posibles mejoras que se podrían hacer a futuro.
+Durante el transcurso del semestre, hubieron varios cambios al diseño original del proyecto asi cómo funcionalidades que no llegaron a ser implementadas. A continuación describiremos los más importantes, explicando las causas y las posibles mejoras que se podrían hacer a futuro.
 
 ### Modularización
 
