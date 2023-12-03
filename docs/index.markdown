@@ -95,7 +95,7 @@ Luego de realizar estas acciones, se presione un botón que envíe los datos act
 A su vez posee una estructura adecuada para integrar estos componentes.
 
 #### Prototipo 2:
-- Es lo mismo que el prototipo 1, pero incluye implentación de APIS. El cual no realizamos.
+- Es lo mismo que el prototipo 1, pero incluye implentación de APIs. El cual no realizamos.
 
 #### Problemas y riesgos:
 - No alcanzaron los pines en la esp8266, por lo tanto tuvimos que utilizar la Arduino Mega para poder conectar todos los elementos.
