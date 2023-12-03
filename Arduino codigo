@@ -16,9 +16,9 @@ Servo ServoIbu;
 Servo ServoOmeo;
 Servo ServoAspi;
 Servo ServoNove;
-float espacio[4] = {2, 2, 2, 2};
-float grosor[4] = {2, 2, 2, 2};
-int cantMax[4] = {10, 10, 10, 10};
+float espacio[4] = {16.5, 19.2, 13.5, 13.2};
+float grosor[4] = {2.5, 1.8, 2.1, 1.7};
+int cantMax[4] = {5, 5, 7, 10};
 
 void setup() {
   Serial.begin(9600);
