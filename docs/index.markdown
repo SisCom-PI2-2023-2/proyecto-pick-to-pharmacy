@@ -8,14 +8,14 @@ layout: home
 #Picktopharmacy
 ---
 
-### Introducción
+## Introducción
 ---
 En el presente proyecto se propone desarrollar y construir un sistema semejante al “Pick to Light” ya existente, añadiendo IoT (Internet of things) implementando sensores y actuadores, con el fin de proporcionar una mayor eficiencia y un mejor control al trabajo de los empleados farmacéuticos.
 
 ---
-### Objetivos
+## Objetivos
 ---
-##### Los objetivos del trabajo son:
+### Los objetivos del trabajo son:
 
 >- Construir un prototipo a escala que represente el “Pick to Pharmacy”.
 >- Implementar una conexión satisfactoria con la nube a utilizar (Thingsboard), realizando acciones a través de esta y recibiendo respuestas del sistema.
@@ -24,16 +24,16 @@ En el presente proyecto se propone desarrollar y construir un sistema semejante 
 >- Implementar un panel para pedido de compra de los productos.
  
 ---
-### Descripción 
+## Descripción 
 ---
-#### *Problema:* 
+### *Problema:* 
 En el sector farmacéutico, la gestión de stock y la seguridad de los medicamentos son cuestiones de suma importancia. En particular, la de aquellos medicamentos de receta verde, los cuales requieren una prescripción de un profesional de la salud autorizado previa a su compra, dado a sus efectos secundarios y riesgos para la salud.
 Por lo tanto mantener un buen manejo del inventario, implica que los fármacos se encuentren en buen estado, disponibles y seguros. Evitando así el riesgo de que se encuentren en malas condiciones, pérdida, hurto o mal uso.
 
-#### *Solución:*
+### *Solución:*
 Para estos problemas se diseñó una solución eficaz y práctica. La cual consiste en un sistema de recolección bajo control profesional de pedidos de medicamentos. Permitiendo guiar con una led, al trabajador hacia sector de la estantería donde se encuentra el producto solicitado por el cliente, indicando en una pantalla Led el nombre del medicamento y la cantidad específica de medicamentos a llevar de ese tipo. Asimismo, para que sea seguro saber quién extrae el medicamento y si está autorizado, cada sección de la estantería consta con una lámina transparente que cubre los fármacos, que solamente se podrá acceder a ellos con una tarjeta de RFID, validando así su extracción. Al pasar la tarjeta, se accionaran los motores que abrirán las compuertas para poder retirar los medicamentos. Al terminar, el trabajador tendrá que presionar un botón para que se verifique si la acción realizada fue correcta, en caso de éxito se cerrarán las compuertas y en caso contrario en el mismo display se mostrará un aviso de error, con el fin de alertar al empleado que no concluyó su trabajo exitosamente.
 
-#### *Implementación:*
+### *Implementación:*
 
 El desarrollo de este proyecto se dividirá en dos grandes partes, software y hardware. 
 La primera respectivamente consiste en implementar una conexión a “ThingsBoard”, para la gestión y visualización de datos extraídos de las estanterías, proporcionando de forma rápida y sencilla información acerca de quiénes fueron aquellos empleados que interactuaron con determinados medicamentos. Se pretende que “ThingsBoard” realice las intervenciones correspondientes sobre el prototipo, ya sea prendiendo los LEDs, indicando las cantidades y posteriormente moviendo los actuadores.
@@ -47,7 +47,7 @@ Por último, se coloca al final de la estantería un botón que tiene como funci
 Las dimensiones de la estantería y sus compartimientos serán vistos más adelante, ya que dependen de los materiales a utilizar.
 
 ---
-### Prototipo
+## Prototipo
 ----
 
 ![](assets/prototipo1.png)
