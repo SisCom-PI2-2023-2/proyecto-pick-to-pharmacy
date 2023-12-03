@@ -20,7 +20,7 @@ Si bien la complejidad de construcción del prototipo es bastante mayo al hacer 
 
 Otra de las ideas originales del proyecto que no llegaron a ser implementadas fue la del control de fechas de vencimiento. En un principio, se pretendía que el sistema conozca las fechas de vencimiento de todos los medicamentos en las estanterías y que notifique al personal (mediante las leds o una api) cuando se hubieran vencido los productos. Luego de familiarizarnos un poco más con thingsboard encontramos que el límitado manejo de bases de datos de la herramienta hacia del control del stock tan detallado como pretendíamos sería muy complicado y tomaría muchisimo tiempo, por ésto decidimos no llegamos a implementa el manejo de fechas de vencimiento, optando únicamente por controlar la cantidad de medicamentos de cada tipo que tiene la góndola.
 
-###Distinción de empleados
+### Distinción de empleados
 
 La distinción entre los distintos empleados del sistema es una función del sistema que perdió un poco de utilidad al hacer un único módulo cómo prototipo. En un principio los empleados estarían no solo asociados a l número de su tarjeta RFID sino a un color de led que indicaría quien debe tomar el pedido. La distinción entre empleados se puede también aplicar de manera que determinados empleados tengan acceso a determinados estantes. Y en caso de tener varías estanterías, se podrían hacer grupos de estanterías (utilizando activos) a las cuales determinados empleados pueden acceder. Éste tipo de mejoras, de manera similar a lo hablado en la parte de modularización, no suponen un cambio muy drástico del funcionamiento del sistema en thingsboard ya que actualmente ya funciona de manera muy similar.
 
