@@ -2,9 +2,9 @@
 layout: post
 categories: posts
 ---
-#Bitacora
+# Bitacora
 
-##Semana 1  
+## Semana 1  
 En la semana del 12 y 14 de septiembre, una vez ya definidido lo que se iba a hacer, se empezaron a definir los actuadores a utilizar y realizar sus respectivas pruebas de concepto.
 En estos dias se consiguieron los sensores de distancia HC SR04 y el RFID. Se buscó en internet un código para ver como funcionaban, siendo estos:
 - Para el sensor de distancia:
