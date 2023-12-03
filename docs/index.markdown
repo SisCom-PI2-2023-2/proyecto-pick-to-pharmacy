@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 
+title: Pick to Pharmacy
 ---
 
 # Introducción
