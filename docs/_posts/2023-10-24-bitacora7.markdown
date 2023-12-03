@@ -1,0 +1,13 @@
+---
+layout: post
+title: Semana 7
+categories: posts
+---
+
+# Bitacora
+
+## Semana 7
+
+En la semana del 24 y 26 de octubre nuestro equipo se encontró muy estancado con una cantidad considerable de problemas que se tuvieron que resolver para poder avanzar con el proyecto.
+Dentro de estos se encontraba la limitada capacidad de Thingsboard para recibir datos, en los cuales dentro del loop principal constantemente estabamos mandando valores a la nube y esta era capaz de recibir una limitada cantidad. Para eso se intento cambiar el watchdog dandole de "comer" y asi lo resolvimos momentaneamente. Posteriormente se volvió a eliminar porque no se precisaban mandar valores constantemente.
+Otro problema que nos surgió fue que las placas constantemente eran incapaces de compilar los programas, probamos codigos anteriores que sabiamos que funcionaban y tampoco compilaban, entonces decidimos volver a conectar todo desde 0 y seguian sin funcionar, entonces desistimos y probamos a la siguiente semana.
