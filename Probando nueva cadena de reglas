@@ -14,8 +14,8 @@
 
 
 // Update these with values suitable for your network.
-const char* ssid = "HUAWEI-IoT";
-const char* password = "ORTWiFiIoT";
+const char* ssid = "AgusV";
+const char* password = "12345678";
 const char* mqtt_server = "demo.thingsboard.io";
 const char* token = "xtYELlImXmVGtgtR2JBt";
 #define RST_PIN  0   //Pin 9 para el reset del RC522
@@ -54,9 +54,9 @@ int value = 0;
 
 //LCDs
 LiquidCrystal_I2C LCDibu(0x27,16,2);
-LiquidCrystal_I2C LCDomeo(0x26,16,2);
-LiquidCrystal_I2C LCDaspi(0x25,16,2);
-LiquidCrystal_I2C LCDnove(0x23,16,2);
+LiquidCrystal_I2C LCDomeo(0x3B,16,2);
+LiquidCrystal_I2C LCDaspi(0x3E,16,2);
+LiquidCrystal_I2C LCDnove(0x3F,16,2);
 
 int buttonState;            // the current reading from the input pin
 int lastButtonState = LOW;  // the previous reading from the input pin
@@ -150,6 +150,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
       estado_servidor = 2;
     }
     if (metodo=="CerrarCompuertas") {  //Set led status and update attribute value via MQTT
+
+      Serial.print("C");
       
       LCDibu.setCursor(1, 1);
       LCDibu.print("              ");
@@ -232,15 +234,15 @@ void callback(char* topic, byte* payload, unsigned int length) {
       }
       if(errome != "0"){
         LCDomeo.setCursor(1, 1);
-        LCDibu.print("Error al sacar");
+        LCDomeo.print("Error al sacar");
       }
       if(errasp != "0"){
         LCDaspi.setCursor(1, 1);
-        LCDibu.print("Error al sacar");
+        LCDaspi.print("Error al sacar");
       }
       if(errnov != "0"){
         LCDnove.setCursor(1, 1);
-        LCDibu.print("Error al sacar");
+        LCDnove.print("Error al sacar");
       }
 
       String localResponseTopic = String(topic);
