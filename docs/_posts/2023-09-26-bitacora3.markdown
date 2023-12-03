@@ -92,9 +92,8 @@ void setup() {
 
 void loop() {
 }
+
 ```
-
-
 - Código que se adicionó para crear el array de hexadecimales:
 
 ```c++
@@ -113,8 +112,11 @@ if ( mfrc522.PICC_IsNewCardPresent()) {
       }
       // Terminamos la lectura de la tarjeta  actual
 ```
+
 - Para la calibración de medicamentos:
+
 ```c++
+
 
 #define trig 4
 #define echo 5
