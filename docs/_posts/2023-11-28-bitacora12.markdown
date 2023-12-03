@@ -1,0 +1,174 @@
+---
+layout: post
+title: Semana 12
+categories: posts
+---
+
+# Bitacora
+
+## Semana 12
+
+En la última semana se termina el proyecto. Se suben los códigos finales a las placas, se resuelven unos pequeños errores menores que se tenian y se termina de montar la maqueta con todos los componentes.
+
+El código del Arduino Mega queda de la siguiente manera:
+
+```c++
+
+
+#include <Servo.h>
+
+#define Led1 3
+#define Led2 4
+#define Led3 5
+#define Led4 6
+#define trigIbu 22
+#define echoIbu 30
+#define trigOmeo 23
+#define echoOmeo 31
+#define trigAspi 24
+#define echoAspi 32
+#define trigNove 25
+#define echoNove 33
+Servo ServoIbu;
+Servo ServoOmeo;
+Servo ServoAspi;
+Servo ServoNove;
+float espacio[4] = {16.5, 19.2, 13.5, 13.2};
+float grosor[4] = {2.5, 1.8, 2.1, 1.7};
+int cantMax[4] = {5, 5, 7, 10};
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(Led1, OUTPUT);
+  pinMode(Led2, OUTPUT);
+  pinMode(Led3, OUTPUT);
+  pinMode(Led4, OUTPUT);
+  ServoIbu.attach(13);
+  ServoOmeo.attach(12);
+  ServoAspi.attach(11);
+  ServoNove.attach(10);
+  pinMode(trigIbu, OUTPUT);
+  pinMode(echoIbu, INPUT);
+  pinMode(trigOmeo, OUTPUT);
+  pinMode(echoOmeo, INPUT);
+  pinMode(trigAspi, OUTPUT);
+  pinMode(echoAspi, INPUT);
+  pinMode(trigNove, OUTPUT);
+  pinMode(echoNove, INPUT);
+}
+
+void loop() {
+    if(Serial.available()){
+      int lectura = Serial.read();
+
+      if(lectura == 'I'){
+        digitalWrite(Led1, HIGH);
+      }
+      else if(lectura == 'O'){
+        digitalWrite(Led2, HIGH);
+      }
+      else if(lectura == 'A'){
+        digitalWrite(Led3, HIGH);
+      }
+      else if(lectura == 'N'){
+        digitalWrite(Led4, HIGH);
+      }
+      else if(lectura == 'W'){
+        ServoIbu.write(180);
+      }
+      else if(lectura == 'X'){
+        ServoOmeo.write(180);
+      }
+      else if(lectura == 'Y'){
+        ServoAspi.write(180);
+      }
+      else if(lectura == 'Z'){
+        ServoNove.write(180);
+      }
+      else if(lectura == 'C'){
+        ServoIbu.write(0);
+        ServoOmeo.write(0);
+        ServoAspi.write(0);
+        ServoNove.write(0);
+        digitalWrite(Led1, LOW);
+        digitalWrite(Led2, LOW);
+        digitalWrite(Led3, LOW);
+        digitalWrite(Led4, LOW);
+      }
+      else if(lectura == 'M'){
+        for(int i=0; i<4;i++){
+        // Clears the trigPin
+        digitalWrite(trigIbu + i, LOW);
+        delayMicroseconds(2);
+        // Sets the trigPin on HIGH state for 10 micro seconds
+        digitalWrite(trigIbu + i, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigIbu + i, LOW);
+        // Reads the echoPin, returns the sound wave travel time in microseconds
+        int duration = pulseIn(echoIbu + i, HIGH);
+        // Calculating the distance
+        int distance = duration * 0.034 / 2;
+        int cantidad = cantMax[i] - int(round((distance - espacio[i])/grosor[i]));
+        Serial.print(cantidad);
+        }
+      }
+    }
+}
+
+```
+
+Y el código de la esp8266 recibe las siguientes modificaciones a la versión anterior:  
+
+```c++
+
+
+// Update these with values suitable for your network.
+const char* ssid = "AgusV";
+const char* password = "12345678";
+const char* mqtt_server = "demo.thingsboard.io";
+const char* token = "xtYELlImXmVGtgtR2JBt";
+#define RST_PIN  0   //Pin 9 para el reset del RC522
+int value = 0;
+
+//LCDs
+LiquidCrystal_I2C LCDibu(0x27,16,2);
+LiquidCrystal_I2C LCDomeo(0x3B,16,2);
+LiquidCrystal_I2C LCDaspi(0x3E,16,2);
+LiquidCrystal_I2C LCDnove(0x3F,16,2);
+
+int buttonState;            // the current reading from the input pin
+int lastButtonState = LOW;  // the previous reading from the input pin
+	 void callback(char* topic, byte* payload, unsigned int length) {
+      estado_servidor = 2;
+    }
+    if (metodo=="CerrarCompuertas") {  //Set led status and update attribute value via MQTT
+
+      Serial.print("C");
+
+      LCDibu.setCursor(1, 1);
+      LCDibu.print("              ");
+	 void callback(char* topic, byte* payload, unsigned int length) {
+      }
+      if(errome != "0"){
+        LCDomeo.setCursor(1, 1);
+        LCDomeo.print("Error al sacar");
+      }
+      if(errasp != "0"){
+        LCDaspi.setCursor(1, 1);
+        LCDaspi.print("Error al sacar");
+      }
+      if(errnov != "0"){
+        LCDnove.setCursor(1, 1);
+        LCDnove.print("Error al sacar");
+      }
+
+      String localResponseTopic = String(topic);
+
+```
+
+La maqueta resultó de la siguiente forma:  
+
+![Maquetafinal](/assets/MaquetaFinal.jpg)  
+
+![Maqueta2final](/assets/MaquetaFinal2.jpg)  
+
