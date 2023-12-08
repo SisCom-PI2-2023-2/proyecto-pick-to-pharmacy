@@ -16,8 +16,8 @@ Servo ServoIbu;
 Servo ServoOmeo;
 Servo ServoAspi;
 Servo ServoNove;
-float espacio[4] = {16.5, 19.2, 13.5, 13.2};
-float grosor[4] = {2.5, 1.8, 2.1, 1.7};
+float espacio[4] = {16.8, 19.5, 13.8, 13};
+float grosor[4] = {2.26, 1.76, 2.02, 1.68};
 int cantMax[4] = {5, 5, 7, 10};
 
 void setup() {
