@@ -30,6 +30,11 @@ void setup() {
   ServoOmeo.attach(12);
   ServoAspi.attach(11);
   ServoNove.attach(10);
+  ServoIbu.write(0);
+  ServoOmeo.write(0);
+  ServoAspi.write(0);
+  ServoNove.write(0);
+  ServoIbu.write(0);
   pinMode(trigIbu, OUTPUT);
   pinMode(echoIbu, INPUT);
   pinMode(trigOmeo, OUTPUT);
