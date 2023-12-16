@@ -168,6 +168,9 @@ int lastButtonState = LOW;  // the previous reading from the input pin
 
 La maqueta resultó de la siguiente forma:  
 
+SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/assets/MaquetaFinal.jpg 
+
+
 ![Maquetafinal](/assets/MaquetaFinal.jpg)  
 
 ![Maqueta2final](/assets/MaquetaFinal2.jpg)  
