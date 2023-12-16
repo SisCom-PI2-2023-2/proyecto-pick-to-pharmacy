@@ -50,7 +50,7 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
 ----
 
 ![](assets/prototipo1.png)
-
+<img src="assets/prototipo1.png" aling:center>
 
 ![](assets/prototipo2.png)
 
