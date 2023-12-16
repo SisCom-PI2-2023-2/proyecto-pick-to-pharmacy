@@ -4,8 +4,4 @@ title: Semana 8
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 8
-
 En esta semana solo tuvimos clase el 31 de octubre ya que el 2 de noviembre fue feriado. Aqui intentamos solucionar los mismos problemas que teniamos la semana anterior y empezamos a planificar lo que vendría a ser la maqueta, para ello definimos los materiales, el tamaño, donde iria cada componente y lo mas importante es como se abririan las compuertas. Para ello definimos prototipos en dibujo a escala en programas como Sketchup. Luego buscamos los materiales y planificamos cuando ir a comprarlos. Tambien se encargaron los componentes restantes para poder armarla satisfactoriamente.
