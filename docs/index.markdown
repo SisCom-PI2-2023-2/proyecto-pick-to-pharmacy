@@ -49,13 +49,13 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
 ## Prototipo
 ----
 
-![](assets/prototipo1.png)
-<img src="assets/prototipo1.png" aling:center>
-
-![](assets/prototipo2.png)
-
-
-![](assets/prototipo3.png)
+<div style="text-align: center;">
+  <img src="assets/prototipo1.png">
+  
+  <img src="assets/prototipo2.png">
+  
+  <img src="assets/prototipo3.png">
+</div>
 
 ---
 ## Planificado
