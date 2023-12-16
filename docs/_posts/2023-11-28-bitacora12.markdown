@@ -167,4 +167,5 @@ La maqueta resultó de la siguiente forma:
 
 ![MaqueFinal](/proyecto-pick-to-pharmacy/assets/MaquetaFinal.png) 
 
+![MaqueFinal3](/proyecto-pick-to-pharmacy/assets/MaquetaFinal3.png) 
 
