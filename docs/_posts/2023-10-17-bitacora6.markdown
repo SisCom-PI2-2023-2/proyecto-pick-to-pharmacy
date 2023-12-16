@@ -4,10 +4,6 @@ title: Semana 6
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 6
-
 En la semana del 17 y 19 de octubre logramos realizar la primera prueba de concepto de los motores para abrir las compuertas de los medicamentos. Con esto perfectamente funcionando y entendiendo como va, logramos modificar la primera prueba de Thingsboard para conseguir la segunda prueba de Thingsboard. En la cual, incluian los motores y realizabamos
 la prueba de RPC para abrir una compuertas, en esta, se tenia que registrar una tarjeta sobre el RFID y esto accionaba los motores:
 
