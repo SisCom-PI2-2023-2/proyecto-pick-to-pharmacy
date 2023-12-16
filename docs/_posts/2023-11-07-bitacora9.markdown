@@ -12,15 +12,15 @@ En la semana del 7 y 9 de noviembre se puso en marcha la construcción de la maq
 
 La cadena de reglas quedo de la siguiente manera:
 
-![RuleChain](/assets/CadenaRuleFinal.png)  
+![RuleChain](/proyecto-pick-to-pharmacy/assets/CadenaRuleFinal.png)  
 
-![Chain](/assets/CadenaFinal.png)  
+![Chain](/proyecto-pick-to-pharmacy/assets/CadenaFinal.png)  
 
 Por otro lado, la maqueta armada sin los componentes en ella:  
 
-![Maqueta](/assets/Maqueta.jpg)  
+![Maqueta](/proyecto-pick-to-pharmacy/assets/Maqueta.png)  
 
-![Maqueta2](/assets/Maqueta2.jpg)  
+![Maqueta2](/proyecto-pick-to-pharmacy/assets/Maqueta2.png)  
 
 A su vez, se modificaron los codigos de la esp8266 para que estos puedan trabajar con la nueva cadena de reglas final. Para esta, ya se incluyeron todos los actuadores, por lo que tambien a destacar se necesito hacer un debounce para el boton para no recibir falsos positivos al presionarlo. El código quedó de la siguiente manera:  
 
