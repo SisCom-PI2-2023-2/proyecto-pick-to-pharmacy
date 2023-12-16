@@ -4,10 +4,6 @@ title: Semana 3
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 3
-
 En esta semana del 26 y 28 de septiembre continuamos realizando mas pruebas de conceptos, dentro de las cuales, con el codigo que habiamos probado del RFID se le agregó una pequeña parte para realizar una accion, como prender un led
 Luego se realizó la primera prueba de concepto de otro dispositivo, en este caso el Display LCD para observar como funcionaba. Se intentó crear un array de hexadecimal para cargar el ID de los usuarios y mandarlos a Thingsboard 
 y por último, se realizó un intento de simulación con el sensor de distancia para calcular la cantidad de medicamentos en un estante.
