@@ -4,10 +4,6 @@ title: Semana 2
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 2
-
 En esta semana del 19 y 21 de septiembre empezamos a experimentar los primeros detalles con la nube de Thingsboard, con lo cual, con las primeras pruebas de concepto que ya teniamos del sensor de distancia
 y el RFID decidimos entrelazar ambas. Cargamos un primer codigo de prueba desde la esp8266 para que prendiera leds y mandara el estado hacia Thingsboard.
 
