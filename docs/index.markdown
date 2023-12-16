@@ -142,7 +142,7 @@ A su vez posee una estructura adecuada para integrar estos componentes.
 - [Código Arduino Mega](https://github.com/SisCom-PI2-2023-2/proyecto-pick-to-pharmacy/blob/main/Arduino%20codigo)
 
 
-### Después se incluira fotos del resultado final
+![Maqueta4](/proyecto-pick-to-pharmacy/assets/MaquetaFinal4.png)
 
 ### Conocimientos adquiridos:
 
