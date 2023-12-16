@@ -4,10 +4,6 @@ title: Semana 4
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 4
-
 Para la semana del 3 y 5 de octubre ya se empezó a dejar de lado las pruebas de concepto de los elementos fisicos y comenzamos con las pruebas mas a profundidad de lo que es Thingsboard, conocer realmente que cosas podríamos utilizar y como conectarlas con las placas.
 Se probó un solo código que era el de mandar una nueva tarjeta ingresada en el RFID como un atributo nuevo en Thingsboard.
 
