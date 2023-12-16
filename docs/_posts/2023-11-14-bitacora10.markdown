@@ -4,10 +4,6 @@ title: Semana 10
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 10
-
 En la semana del 14 y 16 de noviembre se nos planteo el problema de que con la esp8266 unicamente no era suficiente la cantidad de pines, por lo que para solucionarlo decidimos conectarla por puerto serie a una Arduino Mega. Por ello modificamos una parte del código que ya teniamos y creamos un archivo para que la Arduino Mega realice opciones segun el parámetro que le envia la esp8266. 
 
 Este fue un primer código para probar la comunicación serial:  
