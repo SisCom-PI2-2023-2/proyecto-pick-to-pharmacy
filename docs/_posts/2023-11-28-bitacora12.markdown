@@ -4,10 +4,6 @@ title: Semana 12
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 12
-
 En la última semana se termina el proyecto. Se suben los códigos finales a las placas, se resuelven unos pequeños errores menores que se tenian y se termina de montar la maqueta con todos los componentes.
 
 El código del Arduino Mega queda de la siguiente manera:
