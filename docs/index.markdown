@@ -50,9 +50,15 @@ Las dimensiones de la estantería y sus compartimientos serán vistos más adela
 ----
 
 <div style="text-align: center;">
-  <br><img src="assets/prototipo1.png">
-  <br><img src="assets/prototipo2.png">
-  <br><img src="assets/prototipo3.png">
+  <img src="assets/prototipo1.png">   
+
+ 
+  <img src="assets/prototipo2.png">    
+
+  
+  <img src="assets/prototipo3.png">    
+
+  
 </div>
 
 ---
