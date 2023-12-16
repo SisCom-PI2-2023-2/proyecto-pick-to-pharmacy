@@ -168,8 +168,8 @@ int lastButtonState = LOW;  // the previous reading from the input pin
 
 La maqueta resultó de la siguiente forma:  
 
-/proyecto-pick-to-pharmacy/assets/MaquetaFinal.jpg 
 
+![MaquetaFinal](assets/MaquetaFinal.jpg)  
 
-![Maqueta2final](/assets/MaquetaFinal2.jpg)  
+![Maqueta2final](assets/MaquetaFinal2.jpg)  
 
