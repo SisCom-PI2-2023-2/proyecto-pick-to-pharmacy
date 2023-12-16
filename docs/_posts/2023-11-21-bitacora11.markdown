@@ -4,10 +4,6 @@ title: Semana 11
 categories: posts
 ---
 
-# Bitacora
-
-## Semana 11
-
 En la semana del 21 y el 23 de noviembre, definimos las últimas cosas para los códigos y posteriormente terminar y armar la maqueta para la siguiente semana. Agregamos al codigo de arduino los componentes que nos faltaban y adaptamos lo mismo en la otra placa.
 
 El codigo de la esp8266 quedaria de la siguiente manera:  
@@ -497,4 +493,12 @@ void loop() {
 }
 
 ```
+
+
+![ArduinoMega](/proyecto-pick-to-pharmacy/assets/ArduinoMega.png)
+
+
+![Empezando](/proyecto-pick-to-pharmacy/assets/Empezando.png) 
+
+
 
