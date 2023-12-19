@@ -16,9 +16,11 @@ Servo ServoIbu;
 Servo ServoOmeo;
 Servo ServoAspi;
 Servo ServoNove;
-float espacio[4] = {16.8, 19.5, 13.8, 13};
-float grosor[4] = {2.26, 1.76, 2.02, 1.68};
-int cantMax[4] = {5, 5, 7, 10};
+float espacio[4] = {17.7, 21.2, 11.3, 11.0};
+float grosor[4] = {2.5, 1.8, 1.8, 1.7};
+int cantMax[4] = {5, 5, 7, 9};
+float medidas[4][9]={{1.7,1.7,2.5,2.0,5.6,0,0,0,0},{0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0}};
+
 
 void setup() {
   Serial.begin(9600);
@@ -62,16 +64,16 @@ void loop() {
         digitalWrite(Led4, HIGH);
       }
       else if(lectura == 'W'){
-        ServoIbu.write(180);
+        ServoIbu.write(100);
       }
       else if(lectura == 'X'){
-        ServoOmeo.write(180);
+        ServoOmeo.write(100);
       }
       else if(lectura == 'Y'){
-        ServoAspi.write(180);
+        ServoAspi.write(100);
       }
       else if(lectura == 'Z'){
-        ServoNove.write(180);
+        ServoNove.write(100);
       }
       else if(lectura == 'C'){
         ServoIbu.write(0);
@@ -85,20 +87,22 @@ void loop() {
       }
       else if(lectura == 'M'){
         for(int i=0; i<4;i++){
-        // Clears the trigPin
-        digitalWrite(trigIbu + i, LOW);
-        delayMicroseconds(2);
-        // Sets the trigPin on HIGH state for 10 micro seconds
-        digitalWrite(trigIbu + i, HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigIbu + i, LOW);
-        // Reads the echoPin, returns the sound wave travel time in microseconds
-        int duration = pulseIn(echoIbu + i, HIGH);
-        // Calculating the distance
-        int distance = duration * 0.034 / 2;
-        int cantidad = cantMax[i] - int(round((distance - espacio[i])/grosor[i]));
-        Serial.print(cantidad);
+        
+          float suma = 0;
+            // Clears the trigPin
+            digitalWrite(trigIbu + i, LOW);
+            delayMicroseconds(2);
+            // Sets the trigPin on HIGH state for 10 micro seconds
+            digitalWrite(trigIbu + i, HIGH);
+            delayMicroseconds(10);
+            digitalWrite(trigIbu + i, LOW);
+            // Reads the echoPin, returns the sound wave travel time in microseconds
+            int duration = pulseIn(echoIbu + i, HIGH);
+            // Calculating the distance
+            float distance = duration * 0.017;   
+          int cantidad = int((distance - espacio[i])/grosor[i]);
+          Serial.print(cantidad);           
+          }
         }
       }
     }
-}
